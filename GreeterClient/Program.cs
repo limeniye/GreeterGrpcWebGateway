@@ -7,9 +7,9 @@ using System.Runtime.ConstrainedExecution;
 using System.Security.Cryptography.X509Certificates;
 
 // .. TODO :
-// .. Console.ReadLine() ->
+// .. Console.ReadKey() ->
 // .. Waiting for server initialization
-Console.ReadLine();
+Console.ReadKey();
 const string host = "localhost";
 
 #region Doesnt work with gRPC
@@ -29,8 +29,9 @@ const string host = "localhost";
 
 try
 {
-    var client = InsecureProdClient(5054);
+    var client = SecureProdClient(50052);
     var response = await client.GetAsync(new Hello { Name = "limeniye" });
+    Console.WriteLine(response.Result);
 }
 catch(Exception ex)
 {
@@ -46,8 +47,8 @@ Console.ReadLine();
 
 static GrpcServiceClient SecureProdClient(int port) =>
     new GrpcServiceClient($"https://{host}:{port}",
-        new X509Certificate2($"https://{host}/grpc.crt".GetBytesFromUrl()),
-        GrpcUtils.AllowSelfSignedCertificatesFrom("host"));
+        new X509Certificate2("server.crt"),
+        GrpcUtils.AllowSelfSignedCertificatesFrom(host));
 
 static GrpcServiceClient InsecureProdClient(int port)
 {
