@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreeterService", "GreeterService\GreeterService.csproj", "{B89C03D1-E22E-4648-8937-D9829D136D64}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreeterClient", "GreeterClient\GreeterClient.csproj", "{267DBBBD-A063-44E1-8FA4-1229A0F2B1AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{64CEAC72-7CE7-401A-AB93-7F47304BA68D}"
+	ProjectSection(SolutionItems) = preProject
+		nginx\Dockerfile = nginx\Dockerfile
+		nginx\nginx.conf = nginx\nginx.conf
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B89C03D1-E22E-4648-8937-D9829D136D64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B89C03D1-E22E-4648-8937-D9829D136D64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B89C03D1-E22E-4648-8937-D9829D136D64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B89C03D1-E22E-4648-8937-D9829D136D64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{267DBBBD-A063-44E1-8FA4-1229A0F2B1AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{267DBBBD-A063-44E1-8FA4-1229A0F2B1AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{267DBBBD-A063-44E1-8FA4-1229A0F2B1AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{267DBBBD-A063-44E1-8FA4-1229A0F2B1AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3BB38CFC-0E7F-4A28-9D98-A8521A902903}
+	EndGlobalSection
+EndGlobal
