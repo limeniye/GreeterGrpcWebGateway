@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{64CEAC72
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F56962BC-9E91-466A-99CB-0182F0815319}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{34F8C831-24B3-43B1-B8B9-CA44693C7599}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{C8469EC0-4191-4820-912F-C65187596A26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{F56962BC-9E91-466A-99CB-0182F0815319}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F56962BC-9E91-466A-99CB-0182F0815319}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F56962BC-9E91-466A-99CB-0182F0815319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34F8C831-24B3-43B1-B8B9-CA44693C7599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34F8C831-24B3-43B1-B8B9-CA44693C7599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34F8C831-24B3-43B1-B8B9-CA44693C7599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34F8C831-24B3-43B1-B8B9-CA44693C7599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8469EC0-4191-4820-912F-C65187596A26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8469EC0-4191-4820-912F-C65187596A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8469EC0-4191-4820-912F-C65187596A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8469EC0-4191-4820-912F-C65187596A26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
