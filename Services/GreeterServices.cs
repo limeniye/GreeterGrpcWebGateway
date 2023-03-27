@@ -1,8 +1,7 @@
-using System;
 using Contracts;
 using ServiceStack;
 
-namespace MyGrpcProject.ServiceInterface
+namespace Services
 {
     public class GreeterServices : Service
     {

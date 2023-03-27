@@ -8,7 +8,6 @@ namespace GreeterService
     {
         public void Configure(IWebHostBuilder builder) => builder
             .ConfigureServices(services => services.AddServiceStackGrpc())
-            .Configure(app => app.UseRouting())
             .ConfigureAppHost(appHost => {
                 appHost.Plugins.Add(new GrpcFeature(appHost.GetApp()));
             });

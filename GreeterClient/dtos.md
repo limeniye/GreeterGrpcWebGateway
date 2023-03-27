@@ -5,4 +5,4 @@
 
 - Address -> https://localhost:5001
 
-- 
+- User PowerShell with -> x proto-csharp https://localhost:5001

@@ -1,5 +1,5 @@
 using Funq;
-using MyGrpcProject.ServiceInterface;
+using Services;
 using ServiceStack;
 
 [assembly: HostingStartup(typeof(GreeterService.AppHost))]
