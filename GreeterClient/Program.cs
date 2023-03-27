@@ -1,11 +1,16 @@
 ﻿using Contracts;
 using Grpc.Core;
 using Grpc.Net.Client;
+using ProtoBuf.Grpc.Client;
+using ServiceStack;
+using System.Runtime.ConstrainedExecution;
+using System.Security.Cryptography.X509Certificates;
 
 // .. TODO :
 // .. Console.ReadLine() ->
 // .. Waiting for server initialization
 Console.ReadLine();
+const string host = "localhost";
 
 #region Doesnt work with gRPC
 //var handler = new HttpClientHandler();
@@ -21,3 +26,31 @@ Console.ReadLine();
 //var response = client.GetHello(new Hello { Name = "limeniye" });
 //Console.WriteLine(response.Result);
 #endregion
+
+try
+{
+    var client = InsecureProdClient(5054);
+    var response = await client.GetAsync(new Hello { Name = "limeniye" });
+}
+catch(Exception ex)
+{
+    Console.WriteLine(ex);
+}
+// SSL Nginx -> plain-text .NET Core
+//var client = SecureProdClient(50051);
+
+// SSL Nginx -> SSL .NET Core
+//var client = SecureProdClient(50052);
+
+Console.ReadLine();
+
+static GrpcServiceClient SecureProdClient(int port) =>
+    new GrpcServiceClient($"https://{host}:{port}",
+        new X509Certificate2($"https://{host}/grpc.crt".GetBytesFromUrl()),
+        GrpcUtils.AllowSelfSignedCertificatesFrom("host"));
+
+static GrpcServiceClient InsecureProdClient(int port)
+{
+    GrpcClientFactory.AllowUnencryptedHttp2 = true;
+    return new GrpcServiceClient($"http://{host}:{port}");
+}
