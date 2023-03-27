@@ -5,6 +5,8 @@ services:
     image: nginx:latest
     container_name: nginx
     restart: always
+    depends_on:
+      - greeterservice
     ports:
       - "50050:50050"
       - "50051:50051"
