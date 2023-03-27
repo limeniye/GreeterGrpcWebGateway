@@ -7,15 +7,17 @@ using Grpc.Net.Client;
 // .. Waiting for server initialization
 Console.ReadLine();
 
-var handler = new HttpClientHandler();
-handler.ServerCertificateCustomValidationCallback = (message, certificate2, arg3, arg4) => true;
-var options = new GrpcChannelOptions()
-{
-    HttpHandler = handler,
-    Credentials = ChannelCredentials.Insecure
-};
+#region Doesnt work with gRPC
+//var handler = new HttpClientHandler();
+//handler.ServerCertificateCustomValidationCallback = (message, certificate2, arg3, arg4) => true;
+//var options = new GrpcChannelOptions()
+//{
+//    HttpHandler = handler,
+//    Credentials = ChannelCredentials.Insecure
+//};
 
-var channel = new Channel("localhost:5054", ChannelCredentials.Insecure);
-var client = new GrpcServices.GrpcServicesClient(channel);
-var response = client.GetHello(new Hello { Name = "limeniye" });
-Console.WriteLine(response.Result);
+//var channel = new Channel("localhost:50050", ChannelCredentials.Insecure);
+//var client = new GrpcServices.GrpcServicesClient(channel);
+//var response = client.GetHello(new Hello { Name = "limeniye" });
+//Console.WriteLine(response.Result);
+#endregion

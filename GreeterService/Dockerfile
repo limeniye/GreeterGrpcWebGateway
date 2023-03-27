@@ -2,12 +2,18 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+EXPOSE 5051
+EXPOSE 5054
+EXPOSE 5055
+
+ENV ASPNETCORE_URLS http://*:5054;https://*:5051
+ENV ASPNETCORE_ENVIRONMENT Development
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["GreeterService/GreeterService.csproj", "GreeterService/"]
+COPY ["Services/Services.csproj", "Services/"]
+COPY ["Contracts/Contracts.csproj", "Contracts/"]
 RUN dotnet restore "GreeterService/GreeterService.csproj"
 COPY . .
 WORKDIR "/src/GreeterService"

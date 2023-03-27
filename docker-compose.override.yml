@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  greeterservice:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=mypassword123
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/greeter.pfx
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/https:ro
