@@ -1,12 +1,11 @@
-﻿using Contracts;
-using Grpc.Core;
-using Grpc.Net.Client;
+- Visual Studio -> Extensions -> Install -> StackServices;
+- Run GreeterService;
+- GreeterClient -> Right Click -> Add ServiceStack Referenece
+  More about ServiceStack Referenece 
 
-// .. TODO :
-// .. Console.ReadLine() ->
-// .. Waiting for server initialization
-Console.ReadLine();
+- Address -> https://localhost:5001
 
+```C#
 var handler = new HttpClientHandler();
 handler.ServerCertificateCustomValidationCallback = (message, certificate2, arg3, arg4) => true;
 var options = new GrpcChannelOptions()
@@ -18,4 +17,7 @@ var options = new GrpcChannelOptions()
 var channel = new Channel("localhost:5054", ChannelCredentials.Insecure);
 var client = new GrpcServices.GrpcServicesClient(channel);
 var response = client.GetHello(new Hello { Name = "limeniye" });
-Console.WriteLine(response.Result);
+```
+
+-Or
+  > x proto-csharp https://localhost:5001
