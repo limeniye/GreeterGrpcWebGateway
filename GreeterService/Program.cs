@@ -1,7 +1,15 @@
+using GreeterService;
+using ServiceStack;
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddGrpc();
 var app = builder.Build();
-app.MapGrpcService<GreeterService.Services.GreeterService>();
-app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
+
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+}
+app.UseRouting();
+app.UseServiceStack(new AppHost());
 
 app.Run();
