@@ -29,7 +29,8 @@ const string host = "localhost";
 
 try
 {
-    var client = SecureProdClient(50052);
+    var client = InsecureProdClient(50050);
+    //var client = SecureProdClient(50052);
     var response = await client.GetAsync(new Hello { Name = "limeniye" });
     Console.WriteLine(response.Result);
 }
