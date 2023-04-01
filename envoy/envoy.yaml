@@ -1,9 +1,8 @@
 static_resources:
   listeners:
-  - address:
-      socket_address:
-        address: 0.0.0.0
-        port_value: 8811
+  - name: main-listener
+    address:
+      socket_address: { address: 0.0.0.0, port_value: 8811 }
     filter_chains:
     - filters:
       - name: envoy.filters.network.http_connection_manager
@@ -15,15 +14,21 @@ static_resources:
             name: local_route
             virtual_hosts:
             - name: backend
-              domains:
-              - "*"
+              domains: ["*"]
               routes:
-              - match:
-                  prefix: "/"
-                  grpc: {}
-                route:
-                  cluster: backend_grpc_service
+              - match: { prefix: "/", grpc: {} }
+                route: { cluster: backend_grpc_service }
           http_filters:
+          - name: envoy.filters.http.grpc_json_transcoder
+            typed_config:
+              "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_json_transcoder.v3.GrpcJsonTranscoder
+              proto_descriptor: "/data/greet_definition.pb"
+              services: ["greet.Greeter"]
+              print_options:
+                add_whitespace: true
+                always_print_primitive_fields: true
+                always_print_enums_as_ints: false
+                preserve_proto_field_names: false
           - name: envoy.filters.http.router
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
