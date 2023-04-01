@@ -1,3 +1,8 @@
+admin:
+  access_log_path: /tmp/admin_access.log
+  address:
+    socket_address: { address: 0.0.0.0, port_value: 8812 }
+
 static_resources:
   listeners:
   - name: main-listener
@@ -51,5 +56,5 @@ static_resources:
         - endpoint:
             address:
               socket_address:
-                address: grpc-server
-                port_value: 8081
+                address: greeterservice
+                port_value: 5001
