@@ -7,16 +7,18 @@
     <UserSecretsId>2b3e3628-05f7-4fbd-ae1d-19295751545b</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
-  </PropertyGroup>
-
-  <ItemGroup>
-	<Protobuf Include="..\protos\greet.proto" Link="protos\greet.proto" />
-  </ItemGroup>
+  </PropertyGroup>  	
 	
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
     <PackageReference Include="Grpc.AspNetCore" Version="2.52.0" />
     <PackageReference Include="Grpc.AspNetCore.Web" Version="2.52.0" />
+    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.52.0" />
+	<PackageReference Include="Microsoft.AspNetCore.Grpc.HttpApi" Version="0.1.0-alpha.21317.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+  </ItemGroup>  	
+	
+  <ItemGroup>
+    <Protobuf Include="..\protos\*.proto" ProtoRoot="..\protos" AdditionalImportDirs="..\protos\google\api" Link="protos\greet.proto" GrpcServices="Server"/>
   </ItemGroup>
 	
 </Project>
