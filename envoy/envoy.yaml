@@ -9,7 +9,7 @@ static_resources:
         typed_config:
           "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
           codec_type: AUTO
-          stat_prefix: ingress_http
+          stat_prefix: grpc_json
           route_config:
             name: local_route
             virtual_hosts:
@@ -17,7 +17,7 @@ static_resources:
               domains: ["*"]
               routes:
               - match: { prefix: "/", grpc: {} }
-                route: { cluster: backend_grpc_service }
+                route: { cluster: backend_grpc_service, timeout: { seconds: 60 }  }
           http_filters:
           - name: envoy.filters.http.grpc_json_transcoder
             typed_config:
@@ -37,6 +37,8 @@ static_resources:
   - name: backend_grpc_service
     type: STRICT_DNS
     lb_policy: ROUND_ROBIN
+    connect_timeout: 1.25s
+    dns_lookup_family: V4_ONLY
     typed_extension_protocol_options:
       envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
         "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
