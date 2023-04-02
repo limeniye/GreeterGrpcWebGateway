@@ -7,12 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreeterService", "GreeterSe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GreeterClient", "GreeterClient\GreeterClient.csproj", "{267DBBBD-A063-44E1-8FA4-1229A0F2B1AB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{64CEAC72-7CE7-401A-AB93-7F47304BA68D}"
-	ProjectSection(SolutionItems) = preProject
-		nginx\Dockerfile = nginx\Dockerfile
-		nginx\nginx.conf = nginx\nginx.conf
-	EndProjectSection
-EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{2DD36B37-646C-4D3F-9D7D-CC4C55AAAA68}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "envoy", "envoy", "{18E89EBA-0665-41B5-93F6-564DB9E00E4E}"

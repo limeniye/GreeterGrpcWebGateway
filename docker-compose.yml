@@ -1,33 +1,20 @@
 version: '3.4'
 
 services:
-  envoy:
-    image: envoy:latest
-    container_name: envoy
+  greeter-envoy:
+    image: greeter-envoy:latest
+    container_name: greeter-envoy
     build:
       context: ./envoy
       dockerfile: Dockerfile
     depends_on:
-      - greeterservice
+      - greeter-service
     ports:
-      - "8811:8811"
-      - "8812:8812"
-    network_mode: host
+      - "8080:8080"
+      - "9902:9902"
 
-  #nginx:
-  #  image: nginx:latest
-  #  container_name: nginx
-  #  restart: always
-  #  depends_on:
-  #    - greeterservice
-  #  ports:
-  #    - "50050:50050"
-  #  volumes:
-  #    - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-  #    - ./nginx/logs/:/var/log/nginx/
-
-  greeterservice:
-    image: ${DOCKER_REGISTRY-}greeterservice
+  greeter-service:
+    image: ${DOCKER_REGISTRY-}greeter-service
     build:
       context: .
       dockerfile: GreeterService/Dockerfile
