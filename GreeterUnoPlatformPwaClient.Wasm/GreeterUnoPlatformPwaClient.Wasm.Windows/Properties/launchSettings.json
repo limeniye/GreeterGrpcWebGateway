@@ -1,7 +1,0 @@
-{
-  "profiles": {
-    "GreeterUnoPlatformPwaClient.Wasm.Windows": {
-      "commandName": "MsixPackage"
-    }
-  }
-}
