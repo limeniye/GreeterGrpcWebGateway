@@ -1,4 +1,6 @@
-﻿namespace GreeterService
+﻿using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+
+namespace GreeterService
 {
     public class Startup
     {
@@ -7,15 +9,17 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
+            services.AddGrpcHttpApi();
+            services.AddGrpcReflection();
             services.AddControllers();
             services.AddHttpContextAccessor();
 
             services.AddCors(o => o.AddPolicy("AllowAll", builder =>
             {
-                builder.AllowAnyOrigin()
+                builder.SetIsOriginAllowed((host) => true)
                        .AllowAnyMethod()
                        .AllowAnyHeader()
-                       .WithExposedHeaders("Grpc-Status", "Grpc-Message", "Grpc-Encoding", "Grpc-Accept-Encoding");
+                       .AllowCredentials();
             }));
         }
 
@@ -42,18 +46,14 @@
             // Grpc.AspNetCore.Web package not needed for this scenario
             // app.UseGrpcWeb();
 
-            app.UseCors(cors => cors
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true)
-                .AllowCredentials()
-                );
-            app.UseGrpcWeb();
+            app.UseCors("AllowAll");
             app.UseEndpoints(endpoints =>
             {
                 // .EnableGrpcWeb() removed because in this scenario we are using an Envoy proxy to 
                 // allow browser app to make gRPC calls 
-                endpoints.MapGrpcService<GreeterService.Services.GreeterService>().EnableGrpcWeb();
+                endpoints.MapGrpcService<GreeterService.Services.GreeterService>();
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllers();
             });
         }
     }

@@ -17,11 +17,10 @@ namespace Business
 
 
                 var httpClient = new HttpClient(new GrpcWebHandler(GrpcWebMode.GrpcWebText, new HttpClientHandler()));
-
-                var channel = GrpcChannel.ForAddress("https://localhost:5010", new GrpcChannelOptions 
+                var channel = GrpcChannel.ForAddress("https://localhost:8080", new GrpcChannelOptions 
                 { 
                     HttpClient = httpClient,
-                    Credentials = ChannelCredentials.SecureSsl
+                    Credentials = ChannelCredentials.Insecure
                 });
                 var client = new Contracts.Greeter.GreeterClient(channel);
                 var response = await client.SayHelloAsync(new Contracts.HelloRequest { Name = "limeniye" });

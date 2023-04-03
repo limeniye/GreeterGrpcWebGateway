@@ -19,10 +19,13 @@ services:
       context: .
       dockerfile: GreeterService/Dockerfile
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:5001
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:80
+      - GRPC_PORT=81
+      - PORT=80
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
     ports:
-      - "5001:5001"
+      - "5111:80"
+      - "9101:81"

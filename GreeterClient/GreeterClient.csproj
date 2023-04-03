@@ -24,6 +24,22 @@
   </ItemGroup>
 	
   <ItemGroup>
-    <Protobuf Include="protos\greet.proto" Link="protos\greet.proto" GrpcServices="Client"/>
+    <Protobuf Include="protos\greet.proto" Link="protos\greet.proto" GrpcServices="Client" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="certs\" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <None Update="certs\ca.crt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="certs\client.crt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="certs\client.key">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
