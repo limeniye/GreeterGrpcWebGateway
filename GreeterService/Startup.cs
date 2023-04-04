@@ -7,8 +7,6 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddGrpc();
-            services.AddControllers();
-            services.AddHttpContextAccessor();
 
             services.AddCors(o => o.AddPolicy("AllowAll", builder =>
             {
@@ -42,18 +40,14 @@
             // Grpc.AspNetCore.Web package not needed for this scenario
             // app.UseGrpcWeb();
 
-            app.UseCors(cors => cors
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true)
-                .AllowCredentials()
-                );
+            app.UseCors();
+
             app.UseGrpcWeb();
             app.UseEndpoints(endpoints =>
             {
                 // .EnableGrpcWeb() removed because in this scenario we are using an Envoy proxy to 
                 // allow browser app to make gRPC calls 
-                endpoints.MapGrpcService<GreeterService.Services.GreeterService>().EnableGrpcWeb();
+                endpoints.MapGrpcService<Services.GreeterService>().RequireCors("AllowAll").EnableGrpcWeb();
             });
         }
     }

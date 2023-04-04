@@ -30,7 +30,7 @@ namespace WasmSample
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            var res = await DoSomething.Foo();
+            var res = await DoSomething.FooAsync();
             textBlock.Text = res;
         }
     }
