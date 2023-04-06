@@ -27,9 +27,9 @@ static_resources:
                 route: { cluster: greeter-grpc-service, timeout: 60s }
               cors:
                 allow_origin_string_match:
-                    - prefix: "*"
+                    - exact: http://127.0.0.1:5000
                 allow_methods: GET, PUT, DELETE, POST, OPTIONS
-                allow_headers: token,keep-alive,user-agent,cache-control,content-type,content-transfer-encoding,custom-header-1,x-accept-content-transfer-encoding,x-accept-response-streaming,x-user-agent,x-grpc-web,grpc-timeout
+                allow_headers: content-type,origin,referer,authorization,keep-alive,user-agent,cache-control,content-type,content-transfer-encoding,x-accept-content-transfer-encoding,x-accept-response-streaming,x-user-agent,x-grpc-web
                 expose_headers: grpc-status,grpc-message,x-envoy-upstream-service-time
           http_filters:
           - name: envoy.filters.http.cors

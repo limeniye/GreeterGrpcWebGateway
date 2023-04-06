@@ -7,7 +7,10 @@
             services.AddGrpc();
             services.AddGrpcHttpApi();
             services.AddGrpcReflection();
-
+            services.AddGrpc().AddJsonTranscoding(o =>
+            {
+                o.JsonSettings.WriteIndented = true;
+            });
             services.AddCors(o => o.AddPolicy("AllowAll", builder =>
             {
                 builder.AllowAnyOrigin()
@@ -40,7 +43,6 @@
             // app.UseGrpcWeb();
 
             app.UseCors("AllowAll");
-
             app.UseEndpoints(endpoints =>
             {
                 // .EnableGrpcWeb() removed because in this scenario we are using an Envoy proxy to 
