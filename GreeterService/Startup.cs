@@ -39,7 +39,7 @@
             // Grpc.AspNetCore.Web package not needed for this scenario
             // app.UseGrpcWeb();
 
-            app.UseCors();
+            app.UseCors("AllowAll");
 
             app.UseEndpoints(endpoints =>
             {

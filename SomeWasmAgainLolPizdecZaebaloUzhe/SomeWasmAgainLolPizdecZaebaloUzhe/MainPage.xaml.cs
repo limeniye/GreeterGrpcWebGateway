@@ -1,7 +1,7 @@
 ﻿using Business;
 using Microsoft.UI.Xaml.Controls;
 
-namespace App1
+namespace SomeWasmAgainLolPizdecZaebaloUzhe
 {
     public sealed partial class MainPage : Page
     {
@@ -13,6 +13,7 @@ namespace App1
         private async void Button_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             var result = await Do.SomethingAsync();
+            textBlock.Text = result;
         }
     }
 }

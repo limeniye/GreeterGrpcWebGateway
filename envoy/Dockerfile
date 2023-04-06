@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM envoyproxy/envoy:v1.16.1
+FROM envoyproxy/envoy:v1.25.4
 # FROM envoyproxy/envoy:v1.18-latest
 
 RUN apt-get update

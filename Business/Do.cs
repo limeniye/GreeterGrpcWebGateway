@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Grpc.Net.Client;
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Business
@@ -11,7 +12,10 @@ namespace Business
         {
             try
             {
-                var channel = GrpcChannel.ForAddress("http://localhost:8080");
+                var channel = GrpcChannel.ForAddress("http://localhost:8080", new GrpcChannelOptions()
+                {
+                    HttpClient = new HttpClient(new HttpClientHandler()),
+                });
                 var client = new Greeter.GreeterClient(channel);
                 var response = await client.SayHelloAsync(new HelloRequest() { Name = "limeniye" });
                 return response.Message;
