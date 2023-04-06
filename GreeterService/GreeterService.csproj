@@ -13,11 +13,11 @@
     <PackageReference Include="Grpc.AspNetCore" Version="2.52.0" />
     <PackageReference Include="Grpc.AspNetCore.Web" Version="2.52.0" />
     <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.52.0" />
+	<PackageReference Include="Microsoft.AspNetCore.Grpc.HttpApi" Version="0.1.0-alpha.21317.5" />  
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
   </ItemGroup>
 	
-	
-  <ItemGroup>
-    <Protobuf Include="protos\greet.proto" Link="protos\greet.proto" GrpcServices="Server"/>
-  </ItemGroup>
+  <ItemGroup>	  
+    <Protobuf Include="..\protos\greet.proto" Link="protos\greet.proto" ProtoRoot="..\protos" AdditionalImportDirs="google\api" GrpcServices="Server"/>
+  </ItemGroup>		
 </Project>
