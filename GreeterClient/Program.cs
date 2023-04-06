@@ -1,12 +1,8 @@
-﻿using Contracts;
-using Grpc.Core;
-using Grpc.Net.Client;
-// .. TODO :
+﻿// .. TODO :
 // .. Console.ReadKey() ->
 // .. Waiting for server initialization
+using Business;
+
 Console.ReadKey();
-var channel = GrpcChannel.ForAddress("http://localhost:8080");
-var client = new Greeter.GreeterClient(channel);
-var response = client.SayHello(new() { Name = "limeniye" });
-Console.WriteLine(response.Message);
+Console.WriteLine(await Do.SomethingAsync());
 Console.ReadLine();

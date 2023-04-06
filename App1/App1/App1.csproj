@@ -34,22 +34,6 @@
     <UpToDateCheckInput Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml" />
   </ItemGroup>
   <ItemGroup>
-	  <PackageReference Include="Grpc.Core" Version="2.46.6" />
-	  <PackageReference Include="Grpc.Net.Client" Version="2.51.0" />
-	  <PackageReference Include="Grpc.Net.Client.Web" Version="2.48.0" />
-	  <PackageReference Include="Grpc.Net.ClientFactory" Version="2.51.0" />
-	  <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
-	  <PackageReference Include="System.Interactive.Async" Version="6.0.1" />
-
-	  <PackageReference Include="Google.Protobuf" Version="3.21.6" />
-	  <PackageReference Include="Google.Protobuf.Tools" Version="3.21.6" />
-	  <PackageReference Include="Grpc.Tools" Version="2.48.1">
-		  <PrivateAssets>all</PrivateAssets>
-		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  </PackageReference>
+    <ProjectReference Include="..\..\Business\Business.csproj" />
   </ItemGroup>
-	
-  <ItemGroup>
-    <Protobuf Include="protos\greet.proto" Link="protos\greet.proto" GrpcServices="Client"/>
-  </ItemGroup>	
 </Project>
