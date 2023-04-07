@@ -36,18 +36,11 @@
             app.UseStaticFiles();
 
             app.UseRouting();
-
-            // we are not using app.UseGrpcWeb(); to enable browser app to call a gRPC service
-            // We are using an Envoy proxy instead
-            // Grpc.AspNetCore.Web package not needed for this scenario
-            // app.UseGrpcWeb();
-
             app.UseCors("AllowAll");
+            app.UseGrpcWeb();
             app.UseEndpoints(endpoints =>
             {
-                // .EnableGrpcWeb() removed because in this scenario we are using an Envoy proxy to 
-                // allow browser app to make gRPC calls 
-                endpoints.MapGrpcService<Services.GreeterService>().RequireCors("AllowAll");
+                endpoints.MapGrpcService<Services.GreeterService>().RequireCors("AllowAll").EnableGrpcWeb();
             });
         }
     }
