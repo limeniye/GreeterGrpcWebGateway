@@ -21,18 +21,6 @@ static_resources:
             - name: local_service
               domains: ["*"]
               routes:
-
-              #- match:
-              #    prefix: "/route-with-filter-disabled"
-              #  route:
-              #    host_rewrite_literal: localhost
-              #    cluster: greeter-grpc-service
-              #    timeout: 5.00s
-              #  # per_filter_config disables the filter for this route
-              #  typed_per_filter_config:
-              #    envoy.filters.http.grpc_http1_reverse_bridge:
-              #      "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_http1_reverse_bridge.v3.FilterConfigPerRoute
-              #      disabled: true
               - match: { prefix: "/" }
                 route:
                   cluster: greeter-grpc-service
@@ -41,7 +29,6 @@ static_resources:
               cors:
                 allow_origin_string_match:
                     - exact: http://127.0.0.1:5000
-                    - exact: http://localhost:5000
                 allow_methods: GET, PUT, DELETE, POST, OPTIONS
                 allow_headers: grpc-accept-encoding,content-type,origin,referer,authorization,keep-alive,user-agent,cache-control,content-type,content-transfer-encoding,x-accept-content-transfer-encoding,x-accept-response-streaming,x-user-agent,x-grpc-web
                 expose_headers: grpc-status,grpc-message,x-envoy-upstream-service-time,custom-header-1
@@ -53,17 +40,6 @@ static_resources:
           - name: envoy.filters.http.grpc_web
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_web.v3.GrpcWeb
-          - name: envoy.filters.http.grpc_json_transcoder
-            typed_config:
-              "@type": type.googleapis.com/envoy.extensions.filters.http.grpc_json_transcoder.v3.GrpcJsonTranscoder
-              proto_descriptor: "/data/greet_definition.pb"
-              services: ["greet.Greeter"]
-              print_options:
-                add_whitespace: true
-                always_print_primitive_fields: true
-                always_print_enums_as_ints: false
-                preserve_proto_field_names: false
-              auto_mapping: true
           - name: envoy.filters.http.router
             typed_config:
               "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
