@@ -1,6 +1,6 @@
 {
   "background_color": "#ffffff",
-  "description": "SomeWasmAgainLolPizdecZaebaloUzhe",
+  "description": "WasmBlazorClient",
   "display": "standalone",
   "icons": [
     {
@@ -29,8 +29,8 @@
       "type": "image/png"
     }
   ],
-  "name": "SomeWasmAgainLolPizdecZaebaloUzhe",
-  "short_name": "SomeWasmAgainLolPizdecZaebaloUzhe",
+  "name": "WasmBlazorClient",
+  "short_name": "WasmBlazorClient",
   "start_url": "/index.html",
   "theme_color": "#ffffff",
   "scope": "/"

@@ -1,7 +1,7 @@
 ﻿using Business;
 using Microsoft.UI.Xaml.Controls;
 
-namespace SomeWasmAgainLolPizdecZaebaloUzhe
+namespace WasmBlazorClient.Shared
 {
     public sealed partial class MainPage : Page
     {

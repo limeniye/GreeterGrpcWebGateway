@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using System;
 
-namespace SomeWasmAgainLolPizdecZaebaloUzhe.Wasm
+namespace WasmBlazorClient.Wasm
 {
     public sealed class Program
     {

@@ -1,8 +1,8 @@
 ﻿<Application
-    x:Class="SomeWasmAgainLolPizdecZaebaloUzhe.App"
+    x:Class="WasmBlazorClient.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:SomeWasmAgainLolPizdecZaebaloUzhe">
+    xmlns:local="using:WasmBlazorClient">
 	
     <Application.Resources>
         <ResourceDictionary>

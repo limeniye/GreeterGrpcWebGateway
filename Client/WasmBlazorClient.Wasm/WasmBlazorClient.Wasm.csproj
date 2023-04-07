@@ -60,7 +60,7 @@
     <PackageReference Include="Uno.WinUI.Lottie" Version="4.7.30" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SomeWasmAgainLolPizdecZaebaloUzhe\SomeWasmAgainLolPizdecZaebaloUzhe.csproj" />
+    <ProjectReference Include="..\WasmBlazorClient.Shared\WasmBlazorClient.Shared.csproj" />
   </ItemGroup>
-  <Import Project="..\SomeWasmAgainLolPizdecZaebaloUzhe.Base\base.props" />
+  <Import Project="base.props" />
 </Project>
