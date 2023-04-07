@@ -12,11 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM envoyproxy/envoy:v1.16.1
+FROM envoyproxy/envoy:v1.25.4
 # FROM envoyproxy/envoy:v1.18-latest
 
 RUN apt-get update
 
 COPY ../envoy.yaml /etc/envoy/envoy.yaml
+COPY ../protos/greet_definition.pb /data/greet_definition.pb
 
 CMD /usr/local/bin/envoy -c /etc/envoy/envoy.yaml -l trace --log-path /tmp/envoy_info.log
